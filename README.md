@@ -1,68 +1,56 @@
-# 👨‍💻 Moses | Lead DevOps & Cloud Systems Architect 
-<p align="left">
-<img src="https://img.shields.io/badge/Focus-Infrastructure_as_Code-blue?style=for-the-badge&logo=terraform" />
-<img src="https://img.shields.io/badge/Focus-High_Availability_Systems-gold?style=for-the-badge&logo=kubernetes" />
-<img src="https://img.shields.io/badge/Focus-Web3_%26_Automation-6f42c1?style=for-the-badge&logo=ethereum" />
-</p>
+<div align="center">
+
+# 🛠️ MOSES | SYSTEMS ARCHITECT
+
+<img src="PASTE_YOUR_LOGO_URL_HERE" width="120" alt="Impulse Logo" />
+
+### [ Senior DevOps & Cloud Engineer ]
+
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=DevOps+%26+Cloud+Infrastructure;Scalable+App+Development;AI+%26+Web3+Solutions;System+Reliability+Expert" alt="Typing SVG" />
 
 ---
 
-### 🌐 System Architecture & Production Environments
-*Senior Engineer leading the technical evolution of the Impulse Ecosystem. Specialist in building high-availability cloud platforms and automated trading pipelines.*
+<p align="center">
+<img src="https://img.shields.io/badge/Production_Platforms-4-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Uptime_Focus-99.9%25-green?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Architecture-Web3_%26_AI-6f42c1?style=for-the-badge" />
+</p>
 
-<br/>
+</div>
 
-| Project | Core Infrastructure Role | Tech Stack Highlight |
+### 🏗️ Ecosystem Portfolio (Impulse Engineering)
+
+| Platform | Architectural Role | Technical Impact |
 | :--- | :--- | :--- |
-| **Impulse Web App** | Managed full-lifecycle production cloud ops & security hardening. | `Firebase` `Linux` `CI/CD` |
-| **ImpulseHub Platform** | Engineered multi-service automation & RBAC architecture. | `Node.js` `API Gateway` `Linux` |
-| **Market Analyzer** | Architected real-time Python data pipelines for trading insights. | `Python` `Data Pipelines` `Logging` |
-| **Web3 Ecosystem** | Orchestrated node infrastructure & EVM-compatible environments. | `Web3.js` `Smart Contracts` `SecOps` |
+| **[IMPULSE Web App](https://webapp.impulsecoin.tech)** | **Lead DevOps Engineer** | Cloud provisioning, security hardening, and high-availability deployment. |
+| **[IMPULSEHUB Platform](https://impulsehub.tech)** | **Systems Architect** | Engineered RBAC, multi-service automation, and backend API orchestration. |
+| **[Telegram Automation](https://t.me/Impulsehub_bot)** | **Automation Lead** | Built payment-triggered workflows using Node.js/Python & Flutterwave. |
+| **[Market Analyzer](https://impulsehub.tech/?section=micromax)** | **Data Systems Lead** | Developed real-time data pipelines for algorithmic market insights. |
+| **[IMPULSE Coin](https://impulsecoin.tech)** | **Infrastructure Lead** | Scaled Web3 node infrastructure and secure environment management. |
 
 ---
 
-### 🛠️ Technical Arsenal (Mastery)
+### ⚡ Technical Arsenal (Mastery)
 
 <p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=aws,gcp,azure,docker,kubernetes,terraform,jenkins,githubactions,linux,nginx,mongodb,firebase,py,nodejs,solidity,react" />
-  </a>
+  <img src="https://skillicons.dev/icons?i=aws,gcp,azure,docker,kubernetes,terraform,jenkins,githubactions,linux,nginx,mongodb,firebase,py,nodejs,solidity,react" />
 </p>
 
 ---
 
-### 📊 Engineering Metrics
+### 📊 System Performance & Contribution Metrics
 <p align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&count_private=true" alt="Isaiah's Stats" height="180px" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight" alt="Top Languages" height="180px" />
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=tokyonight" alt="GitHub Streak" />
+<img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&count_private=true" height="175px" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight" height="175px" />
 </p>
 
 ---
 
-### 📂 Operational Documentation & Blueprints
-> [!IMPORTANT]
-> **[Cloud Architecture & Runbooks](https://docs.google.com/document/d/1_FD21MS3sumOkodFvwI0u0F7WJERZL9gyiV7Pm6Gi4o)** > This repository contains detailed architectural diagrams, deployment workflows, and incident response protocols for the entire Impulse ecosystem.
+### 📝 Engineering Logs & Documentation
+> [!TIP]
+> **View Technical Blueprints:** [Cloud Architecture & Operational Records](https://docs.google.com/document/d/1_FD21MS3sumOkodFvwI0u0F7WJERZL9gyiV7Pm6Gi4o)
+> *Documenting CI/CD workflows, incident response, and system scaling strategies.*
 
----
-
-### ⚡ Technical Activity Feed
-<p align="center">
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=YOUR_USERNAME&theme=tokyonight" width="100%" />
-</p>
-
-<p align="center">
+<div align="center">
   <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake.svg" alt="Snake Animation" />
-</p>
-
-<p align="center">
-  <a href="mailto:your-email@example.com">
-    <img src="https://img.shields.io/badge/CONTACT_ME-000?style=for-the-badge&logo=mailgun&logoColor=white" />
-  </a>
-  <a href="https://linkedin.com/in/your-profile">
-    <img src="https://img.shields.io/badge/LINKEDIN-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-</p>
+</div>

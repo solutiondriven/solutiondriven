@@ -6,11 +6,11 @@
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Systems+Architect;DevOps+%26+Cloud+Infrastructure;Scalable+App+Development;AI+%26+Web3+Solutions" alt="Typing SVG" />
 
-<p align="center">
-<img src="https://github-readme-stats-terminal-syntax.vercel.app/api?username=solutiondriven&show_icons=true&theme=tokyonight" alt="Status" />
-<br/>
-<img src="https://wttr.in/Lagos?0&format=%20%2b%20%7b%20%22%20%3a%20%22%20%2c%20%22%20%3a%20%22%20%7d%20%26%20%20Current+Weather:+%c+%t+%w" alt="Weather" />
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0B1120&height=120&section=header&text=System%20Status:%20Operational%20❄️&fontSize=20&animation=twinkling">
+  <source media="(prefers-color-scheme: light)" srcset="https://capsule-render.vercel.app/api?type=waving&color=7dd3fc&height=120&section=header&text=System%20Status:%20Active%20☀️&fontSize=20&animation=fadeIn">
+  <img alt="Moses Architecture Banner" src="https://capsule-render.vercel.app/api?type=waving&color=7dd3fc&height=120&section=header&text=System%20Status:%20Active&fontSize=20">
+</picture>
 
 ---
 
@@ -24,13 +24,13 @@
 
 ### 🏗️ Ecosystem Portfolio (Impulse Engineering)
 
-| Project | System Visualization | Technical Impact |
-| :--- | :---: | :--- |
-| **[IMPULSE Web App](https://webapp.impulsecoin.tech)** | <img src="MOSES/freepik_br_9c8d58d6-df04-4fa0-aa70-6bb7ee0c7f7c.png" width="50" height="50" /> | **Lead DevOps:** Cloud provisioning and high-availability deployment. |
-| **[Market Analyzer](https://impulsehub.tech/?section=micromax)** | <img src="MOSES/Image_fx%20MA.png" width="50" height="50" /> | **Data Systems Lead:** Real-time pipelines for algorithmic insights. |
-| **[Telegram Automation](https://t.me/Impulsehub_bot)** | <img src="MOSES/Image_fx.jpg" width="50" height="50" /> | **Automation Lead:** Payment-triggered workflows (Node.js/Python). |
-| **[IMPULSE Coin](https://impulsecoin.tech)** | <img src="MOSES/IMG-20250724-WA0011.jpg" width="50" height="50" /> | **Infrastructure Lead:** Web3 node scaling and environment management. |
-| **[IMPULSEHUB Platform](https://impulsehub.tech)** | <img src="MOSES/Join_the_Open_Finance_Movement__version_1.png" width="50" height="50" /> | **Systems Architect:** RBAC, multi-service automation, and API orchestration. |
+| System View | Project & Role | Technical Impact |
+| :---: | :--- | :--- |
+| <img src="MOSES/freepik_br_9c8d58d6-df04-4fa0-aa70-6bb7ee0c7f7c.png" width="65" style="border-radius:50%; border:2px solid #36BCF7;" /> | **[IMPULSE Web App](https://webapp.impulsecoin.tech)**<br/>*Lead DevOps* | Cloud provisioning, security hardening, and high-availability deployment. |
+| <img src="MOSES/Image_fx%20MA.png" width="65" style="border-radius:50%; border:2px solid #36BCF7;" /> | **[Market Analyzer](https://impulsehub.tech/?section=micromax)**<br/>*Data Systems Lead* | Real-time pipelines for algorithmic insights and data processing. |
+| <img src="MOSES/Image_fx.jpg" width="65" style="border-radius:50%; border:2px solid #36BCF7;" /> | **[Telegram Automation](https://t.me/Impulsehub_bot)**<br/>*Automation Lead* | Built payment-triggered workflows using Node.js & Flutterwave. |
+| <img src="MOSES/IMG-20250724-WA0011.jpg" width="65" style="border-radius:50%; border:2px solid #36BCF7;" /> | **[IMPULSE Coin](https://impulsecoin.tech)**<br/>*Infrastructure Lead* | Scaled Web3 node infrastructure and secure environment management. |
+| <img src="MOSES/Join_the_Open_Finance_Movement__version_1.png" width="65" style="border-radius:50%; border:2px solid #36BCF7;" /> | **[IMPULSEHUB Platform](https://impulsehub.tech)**<br/>*Systems Architect* | Engineered RBAC, multi-service automation, and API orchestration. |
 
 ---
 

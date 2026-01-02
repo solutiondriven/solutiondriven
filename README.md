@@ -2,8 +2,6 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0B1120&height=200&section=header&text=%F0%9F%9B%A0%20Moses%20Odusanya%20%F0%9F%9A%A7&fontSize=60&animation=twinkling&fontColor=FFFFFF&fontAlignY=35" alt="🛠️ Moses Odusanya 🚧" />
 
-### [ Systems Architect ]
-
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Systems+Architect;DevOps+%26+Cloud+Infrastructure;Scalable+App+Development;AI+%26+Web3+Solutions" alt="Typing SVG" />
 
 ---

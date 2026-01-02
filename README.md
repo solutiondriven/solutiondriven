@@ -1,22 +1,16 @@
 <div align="center">
 
-# 🛠️ Moses Odusanya
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0B1120&height=200&section=header&text=%F0%9F%9B%A0%20Moses%20Odusanya%20%F0%9F%9A%A7&fontSize=60&animation=twinkling&fontColor=FFFFFF&fontAlignY=35" alt="🛠️ Moses Odusanya 🚧" />
 
 ### [ Systems Architect ]
 
 <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Systems+Architect;DevOps+%26+Cloud+Infrastructure;Scalable+App+Development;AI+%26+Web3+Solutions" alt="Typing SVG" />
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://capsule-render.vercel.app/api?type=waving&color=0B1120&height=120&section=header&text=System%20Status:%20Snowing%20❄️&fontSize=20&animation=twinkling">
-  <source media="(prefers-color-scheme: light)" srcset="https://capsule-render.vercel.app/api?type=waving&color=7dd3fc&height=120&section=header&text=System%20Status:%20Raining%20🌧️&fontSize=20&animation=fadeIn">
-  <img alt="Moses Architecture Banner" src="https://capsule-render.vercel.app/api?type=waving&color=7dd3fc&height=120&section=header&text=System%20Status:%20Active&fontSize=20">
-</picture>
-
 ---
 
 <p align="center">
 <img src="https://img.shields.io/badge/Production_Platforms-4-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Infrastructure_Reliability-High_Availability-green?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Infrastructure_Reliability-HIGH-green?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Architecture-Web3_%26_AI-6f42c1?style=for-the-badge" />
 </p>
 

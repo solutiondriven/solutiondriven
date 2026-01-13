@@ -3,7 +3,7 @@
 **Parent Architecture:** Multi-Cloud Production Backbone (AWS + Supabase)
 
 ## 📖 Architectural Contribution
-This repository documents the infrastructure layer for the **IMPULSE Coin** ecosystem. It serves as the primary implementation of the **Zero-Trust Security Mesh** and **Node Orchestration** patterns defined in the [Global Control Plane](https://solutiondriven.online).
+This repository documents the infrastructure layer for the **IMPULSE Coin** ecosystem. It serves as the primary implementation of the **Zero-Trust Security Mesh** and **Node Orchestration**
 
 
 

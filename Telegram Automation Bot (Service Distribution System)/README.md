@@ -7,7 +7,7 @@ This repository documents a production-grade Telegram bot platform engineered fo
 
 
 ## 🏗️ Technical Implementation Patterns
-In line with the **Senior Platform Engineer** standards of the [IMPULSE Control Plane](https://solutiondriven.online), this system implements several advanced patterns:
+This system implements several advanced patterns:
 
 * **Distributed Task Orchestration:** Utilizes **BullMQ 2.0** and **Redis** for asynchronous signal broadcasting and subscription management, decoupling the bot's response time from long-running background tasks.
 * **Database Integrity & Logic:** Engineered with **Supabase (PostgreSQL)** using strict referential integrity, UUID primary keys, and specialized triggers for automated ID generation (e.g., `TR001` trader IDs).
@@ -39,7 +39,7 @@ In line with the **Senior Platform Engineer** standards of the [IMPULSE Control 
 
 ---
 > [!TIP]
-> **Explore the Full Control Plane:** 🔗 [solutiondriven.online](https://solutiondriven.online)
+> **Explore the Full Control Plane:** 🔗 [solutiondriven.online](https://solutiondriven.online/experience)
 
 ## 🔒 Security & Source Access
 To protect the security of live payment webhooks and private API keys, the primary source code remains in private repositories.

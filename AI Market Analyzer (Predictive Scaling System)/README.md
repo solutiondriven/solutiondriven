@@ -7,7 +7,7 @@ MicroMax is a high-performance market analytics engine designed to process real-
 
 
 ## 🏗️ Technical Architecture Patterns
-This system implements several senior-level engineering patterns featured on my [DevOps Control Plane](https://solutiondriven.online):
+This system implements several senior-level engineering patterns
 
 * **Resilient Data Ingress:** Multi-source API orchestration using **CoinGecko**, **Binance**, and **Frankfurter** with automated fallback logic for high-availability data streams.
 * **Predictive Signal Processing:** Frontend integration of **RSI**, **Fibonacci Retracements**, and **Volatility Analysis** to simulate complex user workloads.

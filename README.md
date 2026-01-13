@@ -2,55 +2,59 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0B1120&height=200&section=header&text=%F0%9F%9B%A0%20Moses%20Odusanya%20%F0%9F%9A%A7&fontSize=60&animation=twinkling&fontColor=FFFFFF&fontAlignY=35" alt="🛠️ Moses Odusanya 🚧" />
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Systems+Architect;DevOps+%26+Cloud+Infrastructure;Scalable+App+Development;AI+%26+Web3+Solutions" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Senior+Platform+Engineer;GitOps+%26+Infrastructure+as+Code;Kubernetes+Operator+Development;Zero-Trust+Security+Architect" alt="Typing SVG" />
 
 ---
 
 <p align="center">
 <img src="https://img.shields.io/badge/Production_Platforms-4-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Infrastructure_Reliability-HIGH-green?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Architecture-Web3_%26_AI-6f42c1?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Infrastructure_Reliability-99.9%25-green?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Security-Zero--Trust_mTLS-6f42c1?style=for-the-badge" />
 </p>
 
 </div>
 
-### 🏗️ Ecosystem Portfolio (Impulse Engineering)
+### 🏗️ Ecosystem Architecture (Impulse Engineering)
 
-| Project | Architectural Role | Technical Impact |
+| System | Platform Focus | Engineering Impact |
 | :--- | :--- | :--- |
-| **[IMPULSE Web App](https://webapp.impulsecoin.tech)** | **Lead DevOps Engineer** | Cloud provisioning, security hardening, and high-availability deployment. |
-| **[Market Analyzer](https://impulsehub.tech/?section=micromax)** | **Data Systems Lead** | Real-time pipelines for algorithmic insights and data processing. |
-| **[Telegram Automation](https://t.me/Impulsehub_bot)** | **Automation Lead** | Built payment-triggered workflows using Node.js & Flutterwave. |
-| **[IMPULSE Coin](https://impulsecoin.tech)** | **Infrastructure Lead** | Scaled Web3 node infrastructure and secure environment management. |
-| **[IMPULSEHUB Platform](https://impulsehub.tech)** | **Systems Architect** | Engineered RBAC, multi-service automation, and API orchestration. |
+| **[Platform Backbone](./01-IMPULSE-Web-App)** | **Multi-Cloud Ops** | Architected AWS/Supabase backbone with 99.9% uptime and modular Terraform. |
+| **[Predictive Scaler](./02-Market-Analyzer)** | **K8s & Go** | Built custom Go controller reducing cold-start latency by **40%**. |
+| **[Event-Driven Mesh](./03-Telegram-Automation)** | **AWS Serverless** | Engineered async payment pipelines using SQS/EventBridge with sub-second latency. |
+| **[Zero-Trust Node](./04-IMPULSE-Coin)** | **Security Mesh** | Implemented Istio mTLS and identity-based access for Web3 infrastructure. |
+| **[GitOps IDP](./05-IMPULSEHUB-Platform)** | **ArgoCD / Crossplane** | Built Internal Developer Platform for automated environment provisioning. |
 
 ---
 
-### 🛠️ Technical Arsenal (Mastery)
+### 🛠️ Technical Arsenal (Infrastructure Mastery)
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=aws,gcp,azure,docker,kubernetes,terraform,jenkins,githubactions,linux,nginx,mongodb,firebase,py,nodejs,solidity,react" />
+  <img src="https://skillicons.dev/icons?i=aws,kubernetes,terraform,go,py,bash,githubactions,linux,prometheus,grafana,docker,nginx,mongodb,nodejs,react" />
 </p>
 
 ---
 
-### 📡 System Performance & Engineering Metrics
+### 📡 Operational Status & Engineering Philosophy
 
-| Metric Type | Visual Telemetry | Status |
-| :--- | :--- | :---: |
-| **Code Reliability** | ████████████████████ 100% | `STABLE` |
-| **Cloud Automation** | ████████████████░░░░ 85% | `OPTIMIZING` |
-| **Web3 Implementation** | ████████████░░░░░░░░ 65% | `SCALING` |
-| **System Uptime** | ████████████████████ 99.9% | `OPERATIONAL` |
+I design and operate production cloud platforms with a focus on reliability, automation, and security-by-design. My work spans AWS infrastructure, event-driven systems, CI/CD automation, and Zero-Trust architectures, supporting web, automation, and Web3-integrated platforms.
 
-> [!NOTE]
-> *The above telemetry represents active system deployments across Impulse Ecosystem nodes.*
+* **Availability:** 99.9% Production Uptime (AWS/Supabase)
+* **Security:** mTLS Identity-Based Access (Istio/Boundary)
+* **Provisioning:** 100% IaC Coverage (Terraform/Crossplane)
+
+> [!IMPORTANT]
+> **Proprietary Infrastructure:** To protect production security and intellectual property for @IMPULSE, primary source code remains in private repositories. **Just-In-Time (JIT) access or live code walkthroughs** can be provided to hiring leads upon request.
 
 ---
 
-### 📝 Engineering Logs & Documentation
+### 📝 Engineering Philosophy & Documentation
+
+I design and operate production cloud platforms with a focus on reliability, automation, and security-by-design. 
+
+My work spans AWS infrastructure, event-driven systems, CI/CD automation, and Zero-Trust architectures, supporting web, automation, and Web3-integrated platforms.
+
 > [!TIP]
-> **View Technical Blueprints:** [Cloud Architecture & Operational Records](https://docs.google.com/document/d/1_FD21MS3sumOkodFvwI0u0F7WJERZL9gyiV7Pm6Gi4o)
+> **View Technical Blueprints:** 🔗 Portfolio: [https://solutiondriven.online](https://solutiondriven.online)
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/platane/snk/output/github-contribution-grid-snake.svg" alt="Snake Animation" />

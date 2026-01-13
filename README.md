@@ -18,10 +18,10 @@
 
 | System | Platform Focus | Engineering Impact |
 | :--- | :--- | :--- |
-| **[Platform Backbone](./Impulse-Coin-(Web3-&-Blockchain-Infrastructure))** | **Multi-Cloud Ops** | Architected AWS/Supabase backbone with 99.9% uptime and modular Terraform. |
+| **[Platform Backbone](./Impulse%20Coin%20(Web3%20%26%20Blockchain%20Infrastructure))** | **Multi-Cloud Ops** | Architected AWS/Supabase backbone with 99.9% uptime and modular Terraform. |
 | **[Predictive Scaler](./02-Market-Analyzer)** | **K8s & Go** | Built custom Go controller reducing cold-start latency by **40%**. |
 | **[Event-Driven Mesh](./03-Telegram-Automation)** | **AWS Serverless** | Engineered async payment pipelines using SQS/EventBridge with sub-second latency. |
-| **[Zero-Trust Node](./Impulse-Coin-(Web3-&-Blockchain-Infrastructure))** | **Security Mesh** | Implemented Istio mTLS and identity-based access for Web3 infrastructure. |
+| **[Zero-Trust Node](./Impulse%20Coin%20(Web3%20%26%20Blockchain%20Infrastructure))** | **Security Mesh** | Implemented Istio mTLS and identity-based access for Web3 infrastructure. |
 | **[GitOps IDP](./05-IMPULSEHUB-Platform)** | **ArgoCD / Crossplane** | Built Internal Developer Platform for automated environment provisioning. |
 
 ---

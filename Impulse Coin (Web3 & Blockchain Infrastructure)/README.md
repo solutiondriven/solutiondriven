@@ -32,5 +32,15 @@ To protect production integrity and the security of the @IMPULSE network, core s
 **Technical walkthroughs or JIT (Just-In-Time) collaborator access for hiring leads can be provided upon request.**
 
 ---
+
+## 📡 Operational Telemetry & Walkthrough
+> [!IMPORTANT]
+> **Technical Deep-Dive (Loom):** 🎥 **[Watch the Infrastructure & Security Audit](https://www.loom.com/your-video-link-here)**
+>
+> In this 3-minute walkthrough, I demonstrate:
+> * **Istio Service Mesh:** Identity-based mTLS traffic encryption between nodes.
+> * **Terraform State:** How I manage multi-region AWS resources for the Web3 backbone.
+> * **Observability:** Real-time health metrics of the Personality Logic system in Grafana.
+
 > [!TIP]
 > **View Full System Architecture:** 🔗 [solutiondriven.online](https://solutiondriven.online)

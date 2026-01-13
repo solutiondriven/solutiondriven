@@ -36,7 +36,7 @@
 
 ### 📡 Operational Status & Engineering Philosophy
 
-I design and operate production cloud platforms with a focus on reliability, automation, and security-by-design. My work spans AWS infrastructure, event-driven systems, CI/CD automation, and Zero-Trust architectures, supporting web, automation, and Web3-integrated platforms.
+I design and operate production cloud platforms with a focus on reliability, automation, and security-by-design. My work spans AWS infrastructure, event-driven systems, CI/CD automation, and Zero-Trust architectures.
 
 * **Availability:** 99.9% Production Uptime (AWS/Supabase)
 * **Security:** mTLS Identity-Based Access (Istio/Boundary)
@@ -47,11 +47,13 @@ I design and operate production cloud platforms with a focus on reliability, aut
 
 ---
 
-### 📝 Engineering Philosophy & Documentation
+### 📝 Engineering Focus & Documentation
 
-I design and operate production cloud platforms with a focus on reliability, automation, and security-by-design. 
+I specialize in bridging the gap between development and operations through **High-Availability designs** and **Scalable Automation**.
 
-My work spans AWS infrastructure, event-driven systems, CI/CD automation, and Zero-Trust architectures, supporting web, automation, and Web3-integrated platforms.
+* 🚀 **GitOps Mastery:** Automating complex deployments via ArgoCD and GitHub Actions.
+* 🛡️ **Cloud Security:** Hardening Kubernetes clusters and implementing Zero-Trust network policies.
+* 📊 **Observability:** Building proactive monitoring systems using Prometheus, Grafana, and custom Go controllers.
 
 > [!TIP]
 > **View Technical Blueprints:** 🔗 Portfolio: [https://solutiondriven.online](https://solutiondriven.online)

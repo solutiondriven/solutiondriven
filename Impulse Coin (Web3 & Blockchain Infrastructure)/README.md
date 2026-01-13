@@ -43,4 +43,4 @@ To protect production integrity and the security of the @IMPULSE network, core s
 > * **Observability:** Real-time health metrics of the Personality Logic system in Grafana.
 
 > [!TIP]
-> **View System Blueprint:** 🔗 [solutiondriven.online](https://solutiondriven.online)
+> **View System Blueprint:** 🔗 [solutiondriven.online](https://solutiondriven.online/experience)

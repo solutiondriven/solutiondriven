@@ -29,7 +29,7 @@ This system implements several senior-level engineering patterns
 
 ## 📡 Technical Walkthrough & Telemetry
 > [!IMPORTANT]
-> 🎥 **[Watch the Market Analyzer & Scaler Integration](https://www.loom.com/your-video-link-here)**
+> 🎥 **[Watch the Market Analyzer & Scaler Integration](https://drive.google.com/file/d/17a-VnRDUBmMwyLkf1AT61dI2goCEwjdH/view?usp=drive_link)**
 >
 > In this 3-minute walkthrough, I demonstrate:
 > * **Predictive Signal Generation:** How technical indicators (RSI/ATR) trigger backend scaling events.

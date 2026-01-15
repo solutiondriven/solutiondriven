@@ -38,7 +38,7 @@ This system implements several senior-level engineering patterns
 
 ---
 > [!TIP]
-> **View System Blueprints:** 🔗 [solutiondriven.online](https://solutiondriven.online/experience)
+> **View System Blueprints:** 🔗 [solutiondriven.online/kubernetes](https://solutiondriven.online/projects/autoscaler)
 
 ## 🔒 Source Access Note
 Primary analytical algorithms and infrastructure configuration files are maintained in private repositories for security.

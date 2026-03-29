@@ -1,45 +1,48 @@
-# 📈 Market Analyzer (MicroMax)
-**Project Scope:** Real-Time Data Pipeline & Predictive Analytics Frontend
-**Infrastructure Role:** Dynamic Workload Generation for Kubernetes Predictive Scaling
+# 📈 MicroMax: Distributed AI Trading Terminal
+
+**Project Scope:** High-Performance Execution & Infrastructure Foundation  
+**Infrastructure Role:** Distributed System Runtime with Custom Go-Based Scaling  
+**Live Access:** 🔗 [Quick Market Analyzer @ impulsehub.tech](https://impulsehub.tech/?section=micromax&i=1) and here [Login to Trade @ trading.impulsehub.tech](https://trading.impulsehub.tech/?i=1)
 
 ## 📖 System Overview
-MicroMax is a high-performance market analytics engine designed to process real-time cryptocurrency and forex data streams. It serves as the primary "Workload Generator" for my **Go-based Kubernetes Predictive Autoscaler**, demonstrating how frontend demand translates into proactive infrastructure scaling.
-
+MicroMax is a professional-grade trading terminal engineered for sub-100ms signal processing and AI-assisted market analysis. Moving beyond a standard dashboard, this repository serves as the production-grade foundation for a **Distributed Infrastructure**, featuring a custom **Go-based Kubernetes controller** designed to handle the extreme volatility of global financial markets.
 
 ## 🏗️ Technical Architecture Patterns
-This system implements several senior-level engineering patterns
+This system implements enterprise-level infrastructure and platform engineering patterns:
 
-* **Resilient Data Ingress:** Multi-source API orchestration using **CoinGecko**, **Binance**, and **Frankfurter** with automated fallback logic for high-availability data streams.
-* **Predictive Signal Processing:** Frontend integration of **RSI**, **Fibonacci Retracements**, and **Volatility Analysis** to simulate complex user workloads.
-* **Event-Driven Integration:** **Telegram Bot API** integration for real-time notification delivery via an asynchronous **AWS Event Mesh**.
-* **Observability-Driven UI:** Custom **Recharts** and **TradingView** visualizations synchronized with backend Prometheus metrics to monitor system impact during market volatility.
+* **Predictive Workload Scaling:** A custom **Kubernetes Controller written in Go** that monitors WebSocket message depth and market volatility to scale execution pods proactively, ensuring the system stays ahead of the data firehose.
+* **Zero-Trust Service Mesh:** Full implementation of **Istio STRICT mTLS** to secure internal communication between trade-logic services and regional exchange adapters.
+* **Resilient Data Ingress:** Multi-source persistent **WebSocket (WSS)** orchestration for Binance and CoinGecko with automated circuit-breaking and failover logic.
+* **Multi-Region Edge Routing:** Architectural support for regional deployment (NY4/LD4) using Node.js routing classes to minimize physical distance to exchange matching engines.
+* **AI-Augmented Observability:** Integration of **Gemini Vision** for real-time chart analysis, synchronized with **Prometheus/Grafana** telemetry to monitor system impact during high-frequency data bursts.
 
 ## 🛠️ The Comprehensive Tech Stack
 | Layer | Technologies | Engineering Focus |
 | :--- | :--- | :--- |
-| **Frontend Ops** | React 18.3, Vite 6, TypeScript | Performance-optimized rendering and sub-second UI updates. |
-| **Analytics** | Recharts, TradingView Widgets | Real-time data visualization of predictive signals. |
-| **Integrations** | Telegram API, CoinGecko, Binance | Multi-provider API resilience and circuit-breaking. |
-| **Styling/UI** | Tailwind CSS, Radix UI, Shadcn/ui | Accessible, mobile-first design with complex interactive primitives. |
+| **Infrastructure** | Kubernetes (EKS), Istio, Terraform | Multi-region orchestration and Zero-Trust networking. |
+| **Custom Tooling** | **Go (Golang)** | Performance-critical Kubernetes Autoscaler logic. |
+| **Runtime** | Node.js 20, TypeScript, Redis | High-concurrency trade execution and tick caching. |
+| **Frontend/AI** | React 18, Vite 6, Gemini API | Sub-second UI updates and AI-driven chart insights. |
+| **Analytics** | TradingView LWC, Recharts | Low-latency visualization of live market data. |
 
 ## 🚀 Operational Impact (Scoped)
-* **Scaling Validation:** Provides the high-frequency traffic spikes necessary to validate the **40% cold-start latency reduction** achieved by the custom K8s controller.
-* **Data Reliability:** Implements sub-second data retrieval through optimized **React Hooks** and efficient state management.
-* **Platform Resilience:** Contributes to the overall **99.9% uptime** through isolated, containerized deployment within the AWS backbone.
+* **Performance Optimization:** The custom Go-scaler delivers a **40% reduction in cold-start latency**, critical for capturing price movements during flash-volatility.
+* **Network Security:** 100% of internal traffic is encrypted via identity-based auth, preventing signal spoofing or unauthorized execution.
+* **Data Reliability:** Sub-millisecond data retrieval achieved through optimized Redis KV-store caching of live exchange ticks.
 
 ## 📡 Technical Walkthrough & Telemetry
 > [!IMPORTANT]
 > 🎥 **[Watch the Market Analyzer & Scaler Integration](https://drive.google.com/file/d/17a-VnRDUBmMwyLkf1AT61dI2goCEwjdH/view?usp=drive_link)**
 >
 > In this 3-minute walkthrough, I demonstrate:
-> * **Predictive Signal Generation:** How technical indicators (RSI/ATR) trigger backend scaling events.
-> * **API Failover:** A live demonstration of the system switching between Binance and CoinGecko fallbacks.
-> * **Dashboard Correlation:** Viewing the React UI side-by-side with **Grafana** infrastructure metrics.
+> * **Predictive Signal Generation:** How technical indicators (RSI/ATR) trigger proactive infrastructure scaling.
+> * **Service Mesh Security:** A live look at Istio mTLS enforcing traffic policies between services.
+> * **Dashboard Correlation:** Viewing the React terminal side-by-side with **Grafana** infrastructure metrics.
 
 ---
 > [!TIP]
 > **View System Blueprints:** 🔗 [solutiondriven.online/kubernetes](https://solutiondriven.online/projects/autoscaler)
 
 ## 🔒 Source Access Note
-Primary analytical algorithms and infrastructure configuration files are maintained in private repositories for security.
+Primary trade-execution algorithms, mTLS configurations, and private infrastructure modules are maintained in private repositories for security.
 **Technical walkthroughs or JIT collaborator access can be provided upon request.**

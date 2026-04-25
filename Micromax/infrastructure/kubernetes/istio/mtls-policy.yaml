@@ -1,0 +1,262 @@
+# Istio Zero-Trust Service Mesh - mTLS Policy
+# Enforces encrypted, mutually-authenticated communication between all services
+# STRICT mode: All traffic must be mTLS; any non-mTLS traffic is rejected
+---
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: istio-system
+spec:
+  # STRICT mode ensures ALL traffic must use mTLS
+  # This applies cluster-wide to all namespaces
+  mtls:
+    mode: STRICT
+  # portLevelMtls allows per-port configuration if needed
+  # Leave empty unless you need legacy non-mTLS services
+
+---
+# Namespace-level mTLS enforcement for Micromax services
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: micromax-mtls
+  namespace: micromax
+spec:
+  mtls:
+    mode: STRICT
+
+---
+# Request Authentication: Validate JWT tokens for service-to-service calls
+# This ensures only authenticated services can invoke each other
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: micromax-jwt-auth
+  namespace: micromax
+spec:
+  # JWT validation applied to all workloads in this namespace
+  jwtRules:
+  - issuer: "https://auth.micromax.local"
+    jwksUri: "https://auth.micromax.local/.well-known/jwks.json"
+    audiences: "micromax-services"
+    # Use forward auth to validate tokens without blocking unauthenticated requests
+    forwardOriginalToken: true
+  # Optional: issuer for external services
+  - issuer: "https://external-partner.com"
+    jwksUri: "https://external-partner.com/.well-known/jwks.json"
+    audiences: "external-integrations"
+
+---
+# Layer 7 Authorization Policies - Service-Level Access Control
+# Only explicitly allowed service-to-service calls are permitted
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: strategy-service-authz
+  namespace: micromax
+spec:
+  selector:
+    matchLabels:
+      app: strategy-service
+  rules:
+  # Strategy service can be called by: signal-aggregator and broker-router
+  - from:
+    - source:
+        principals:
+        - "cluster.local/ns/micromax/sa/signal-aggregator"
+        - "cluster.local/ns/micromax/sa/broker-router"
+    to:
+    - operation:
+        methods: ["POST", "GET"]
+        paths: ["/api/v1/signals*", "/api/v1/health"]
+
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: execution-service-authz
+  namespace: micromax
+spec:
+  selector:
+    matchLabels:
+      app: execution-service
+  rules:
+  # Execution service can only be called by broker-router and risk-manager
+  - from:
+    - source:
+        principals:
+        - "cluster.local/ns/micromax/sa/broker-router"
+        - "cluster.local/ns/micromax/sa/risk-manager"
+    to:
+    - operation:
+        methods: ["POST"]
+        paths: ["/api/v1/execute*", "/api/v1/cancel*"]
+
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: data-ingestion-authz
+  namespace: micromax
+spec:
+  selector:
+    matchLabels:
+      app: data-ingestion
+  rules:
+  # Data ingestion can be called by regional adapters and aggregators
+  - from:
+    - source:
+        principals:
+        - "cluster.local/ns/micromax/sa/binance-adapter-us"
+        - "cluster.local/ns/micromax/sa/binance-adapter-eu"
+        - "cluster.local/ns/micromax/sa/binance-adapter-apac"
+    to:
+    - operation:
+        methods: ["POST"]
+        paths: ["/api/v1/ingest*"]
+
+---
+# Deny All Policy - Explicit allowlist
+# If not explicitly allowed, all traffic is denied
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: default-deny
+  namespace: micromax
+spec:
+  {}  # Deny all by default (no rules = no traffic allowed)
+
+---
+# Allow traffic within the mesh and for service-to-service auth
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-prometheus
+  namespace: micromax
+spec:
+  selector:
+    matchLabels:
+      app: ".*"  # Match all apps
+  rules:
+  # Allow Prometheus to scrape metrics
+  - from:
+    - source:
+        principals: ["cluster.local/ns/istio-system/sa/prometheus"]
+    to:
+    - operation:
+        ports: ["8080"]  # Metrics port
+
+---
+# Network Policy: Additional Layer 3/4 protection
+# Even though mTLS secures layer 7, we also enforce network policies
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: micromax-network-policy
+  namespace: micromax
+spec:
+  podSelector: {}  # Apply to all pods in micromax namespace
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: micromax
+    # Allow from ingress controller
+    - namespaceSelector:
+        matchLabels:
+          name: istio-system
+    ports:
+    - protocol: TCP
+      port: 8000
+  # Allow DNS
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+  egress:
+  # Allow to other micromax services
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: micromax
+    ports:
+    - protocol: TCP
+      port: 8000
+  # Allow DNS
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53
+  # Allow external exchanges (outbound to exchanges)
+  - to:
+    - namespaceSelector: {}
+      podSelector: {}
+    ports:
+    - protocol: TCP
+      port: 443  # HTTPS to exchanges
+
+---
+# Circuit Breaker Configuration - Prevent cascading failures
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: strategy-service-circuit-breaker
+  namespace: micromax
+spec:
+  host: strategy-service.micromax.svc.cluster.local
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 5
+      interval: 30s
+      baseEjectionTime: 30s
+      maxEjectionPercent: 100
+      minRequestVolume: 5
+      splitExternalLocalOriginErrors: true
+  connectionPool:
+    tcp:
+      maxConnections: 100
+    http:
+      http1MaxPendingRequests: 100
+      http2MaxRequests: 1000
+      maxRequestsPerConnection: 2
+
+---
+# Similar circuit breaker for execution service
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: execution-service-circuit-breaker
+  namespace: micromax
+spec:
+  host: execution-service.micromax.svc.cluster.local
+  trafficPolicy:
+    outlierDetection:
+      consecutive5xxErrors: 3  # More aggressive for execution
+      interval: 10s
+      baseEjectionTime: 60s
+      maxEjectionPercent: 50  # Don't eject all instances
+      minRequestVolume: 1
+    connectionPool:
+      tcp:
+        maxConnections: 50
+      http:
+        http1MaxPendingRequests: 50
+        http2MaxRequests: 500
+        maxRequestsPerConnection: 1  # One request per connection for safety

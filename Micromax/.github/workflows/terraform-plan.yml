@@ -1,0 +1,260 @@
+name: Terraform Plan & Validate
+
+on:
+  pull_request:
+    paths:
+      - 'infrastructure/terraform/**'
+      - '.github/workflows/terraform-plan.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - 'infrastructure/terraform/**'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        region:
+          - primary     # US East
+          - europe      # EU West
+          - apac        # Singapore
+    
+    steps:
+      # ========================================================================
+      # 1. CHECKOUT CODE
+      # ========================================================================
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Get full history for better diffs
+
+      # ========================================================================
+      # 2. CONFIGURE GITHUB OIDC FOR ZERO-TRUST AWS AUTH
+      # ========================================================================
+      # No hardcoded AWS credentials needed. Instead, GitHub issues a JWT token
+      # that AWS trusts via OIDC federation. This is the security best practice.
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          role-session-name: terraform-plan-${{ matrix.region }}
+          aws-region: us-east-1  # Region for State management
+
+      # ========================================================================
+      # 3. SETUP TERRAFORM
+      # ========================================================================
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+
+      # ========================================================================
+      # 4. TERRAFORM FORMATTING CHECK
+      # ========================================================================
+      # Ensures consistent code style across IaC
+      - name: Terraform Format Check
+        run: |
+          cd infrastructure/terraform/live/prod
+          terraform fmt -check -recursive ../
+
+      # ========================================================================
+      # 5. TERRAFORM VALIDATION
+      # ========================================================================
+      # Validates Terraform syntax without AWS credentials
+      - name: Terraform Validate
+        run: |
+          cd infrastructure/terraform/live/prod
+          terraform validate
+
+      # ========================================================================
+      # 6. TFLINT - CODE QUALITY SCANNING
+      # ========================================================================
+      # Detects best practice violations, compatibility issues, and bugs
+      - name: TFLint Scan
+        uses: terraform-linters/setup-tflint@v3
+        with:
+          tflint_version: latest
+
+      - name: Run TFLint
+        run: |
+          cd infrastructure/terraform/live/prod
+          tflint --init
+          tflint --format compact
+
+      # ========================================================================
+      # 7. CHECKOV - INFRASTRUCTURE SECURITY SCAN
+      # ========================================================================
+      # Scans for security misconfigurations (exposed credentials, open CIDR blocks, etc)
+      - name: Checkov Security Scan
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: infrastructure/terrafo
+          rm
+          framework: terraform
+          quiet: false
+          compact: true
+          quiet-output: false
+          # Fail if critical issues found
+          soft-fail: false
+          skip-check: |
+            CKV_AWS_1,CKV_AWS_2
+          output-format: sarif
+          output-file-path: reports/checkov.sarif
+
+      - name: Upload Checkov SARIF report
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: reports/checkov.sarif
+          category: checkov-iac
+
+      # ========================================================================
+      # 8. TERRAFORM PLAN
+      # ========================================================================
+      # Generate the plan so human reviewers can see what will change
+      - name: Terraform Init
+        run: |
+          cd infrastructure/terraform/live/prod
+          terraform init -backend=false
+
+      - name: Terraform Plan - Region ${{ matrix.region }}
+        id: plan
+        run: |
+          cd infrastructure/terraform/live/prod
+          terraform plan \
+            -var-file="../../envs/${{ matrix.region }}.tfvars" \
+            -out=terraform-${{ matrix.region }}.tfplan \
+            -no-color
+        continue-on-error: true
+
+      # ========================================================================
+      # 9. TERRAFORM PLAN ANALYSIS
+      # ========================================================================
+      # Show human-readable plan output and highlight dangerous changes
+      - name: Terraform Plan Output
+        if: steps.plan.outcome == 'success'
+        run: |
+          cd infrastructure/terraform/live/prod
+          terraform show terraform-${{ matrix.region }}.tfplan -no-color > plan-${{ matrix.region }}.txt
+          
+          # Highlight resource destruction (red flag for review)
+          if grep -q "# aws_" plan-${{ matrix.region }}.txt | grep -q "will be destroyed"; then
+            echo "⚠️  WARNING: This plan includes resource destruction!"
+          fi
+
+      # ========================================================================
+      # 10. POST PLAN TO PULL REQUEST
+      # ========================================================================
+      # Reviewers see the plan directly in GitHub without needing CLI access
+      - name: Comment Plan on PR
+        if: github.event_name == 'pull_request' && steps.plan.outcome == 'success'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const plan = fs.readFileSync('infrastructure/terraform/live/prod/plan-${{ matrix.region }}.txt', 'utf-8');
+            
+            // Truncate very long plans
+            const maxLength = 30000;
+            const displayPlan = plan.length > maxLength 
+              ? plan.substring(0, maxLength) + '\n... (output truncated)'
+              : plan;
+            
+            const comment = `## Terraform Plan - Region: ${{ matrix.region }}
+            
+            \`\`\`terraform
+            ${displayPlan}
+            \`\`\`
+            
+            **Status:** ✅ Validation passed
+            **Reviewer Check:** Ensure this change is intentional before merging.
+            `;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      # ========================================================================
+      # 11. FAIL JOB IF PLAN FAILED
+      # ========================================================================
+      - name: Fail if Plan Failed
+        if: steps.plan.outcome != 'success'
+        run: |
+          echo "❌ Terraform plan failed for region: ${{ matrix.region }}"
+          exit 1
+
+      # ========================================================================
+      # 12. STORE PLAN FOR APPLY PHASE
+      # ========================================================================
+      # Plan files are needed in the apply workflow for deterministic deployments
+      - name: Store Plan Artifact
+        if: github.ref == 'refs/heads/main' && steps.plan.outcome == 'success'
+        uses: actions/upload-artifact@v3
+        with:
+          name: terraform-plans
+          path: infrastructure/terraform/live/prod/terraform-${{ matrix.region }}.tfplan
+          retention-days: 7
+
+  # ============================================================================
+  # SECURITY: Require approval for plans that affect restricted resources
+  # ============================================================================
+  security-check:
+    runs-on: ubuntu-latest
+    needs: terraform-plan
+    if: always()
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for Dangerous Changes
+        run: |
+          # List of resources that require extra approval
+          DANGEROUS_RESOURCES=(
+            "aws_rds_instance"
+            "aws_s3_bucket"
+            "aws_dynamodb_table"
+            "aws_kms_key"
+            "aws_iam_role"
+          )
+          
+          for plan_file in infrastructure/terraform/live/prod/terraform-*.tfplan; do
+            for resource in "${DANGEROUS_RESOURCES[@]}"; do
+              if grep -q "$resource" "$plan_file"; then
+                echo "⚠️  This plan modifies sensitive resources: $resource"
+                echo "⚠️  Requires additional review and approval"
+              fi
+            done
+          done
+
+  # ============================================================================
+  # STATUS CHECK: Report results back to GitHub
+  # ============================================================================
+  status:
+    runs-on: ubuntu-latest
+    needs: 
+      - terraform-plan
+      - security-check
+    if: always()
+
+    steps:
+      - name: Set Status
+        run: |
+          if [[ "${{ needs.terraform-plan.result }}" == "success" ]] && [[ "${{ needs.security-check.result }}" == "success" ]]; then
+            echo "✅ All Terraform checks passed"
+            exit 0
+          else
+            echo "❌ Terraform validation failed"
+            exit 1
+          fi

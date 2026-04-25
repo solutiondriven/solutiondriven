@@ -1,0 +1,53 @@
+services:
+  - type: web
+    name: micromax-go-bridge
+    runtime: go
+    rootDir: Micromax/go-bridge
+    buildCommand: go build -o app .
+    startCommand: ./app
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: GO_VERSION
+        value: 1.22.0
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: SUPABASE_FOLLOWERS_TABLE
+        value: followers
+      - key: SUPABASE_MASTER_ID_COLUMN
+        value: master_id
+      - key: SUPABASE_ACTIVE_COLUMN
+        value: active
+      - key: SUPABASE_FOLLOWER_API_KEY_COLUMN
+        value: bitget_api_key
+      - key: SUPABASE_FOLLOWER_API_SECRET_COLUMN
+        value: bitget_api_secret
+      - key: SUPABASE_FOLLOWER_PASSPHRASE_COLUMN
+        value: bitget_passphrase
+      - key: MT5_BRIDGE_URL
+        sync: false
+      - key: MT5_BRIDGE_PATH
+        value: /trade
+      - key: BITGET_BASE_URL
+        value: https://api.bitget.com
+      - key: BITGET_API_KEY
+        sync: false
+      - key: BITGET_SECRET_KEY
+        sync: false
+      - key: BITGET_PASSPHRASE
+        sync: false
+      - key: BITGET_LOCALE
+        value: en-US
+      - key: BITGET_CHANNEL_API_CODE
+        sync: false
+      - key: MAX_CONCURRENCY
+        value: 100
+      - key: REQUEST_TIMEOUT_MS
+        value: 10000
+      - key: MT5_BRIDGE_TIMEOUT_MS
+        value: 5000
+      - key: DRY_RUN
+        value: "false"

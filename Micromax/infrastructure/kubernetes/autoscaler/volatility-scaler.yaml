@@ -1,0 +1,122 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: volatility-scaler
+  namespace: micromax
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: volatility-scaler
+  namespace: micromax
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch", "update", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: volatility-scaler
+  namespace: micromax
+subjects:
+- kind: ServiceAccount
+  name: volatility-scaler
+  namespace: micromax
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: volatility-scaler
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: volatility-scaler-config
+  namespace: micromax
+data:
+  TARGET_NAMESPACE: micromax
+  TARGET_DEPLOYMENT: regional-exchange-adapter
+  POLL_INTERVAL: 5s
+  METRICS_TIMEOUT: 1500ms
+  METRICS_ENDPOINTS: http://signal-processor.micromax.svc.cluster.local:8080/internal/volatility,http://trade-executor.micromax.svc.cluster.local:8080/internal/volatility
+  MIN_REPLICAS: "3"
+  MAX_REPLICAS: "30"
+  SCALE_UP_STEP: "4"
+  SCALE_DOWN_STEP: "1"
+  QUEUE_DEPTH_THRESHOLD: "2000"
+  PROCESSING_TARGET_MS: "10"
+  WEBSOCKET_LATENCY_TARGET_MS: "15"
+  SCALE_UP_COOLDOWN: 15s
+  SCALE_DOWN_COOLDOWN: 90s
+  STABILIZATION_WINDOW: 30s
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: volatility-scaler
+  namespace: micromax
+  labels:
+    app: volatility-scaler
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: volatility-scaler
+  template:
+    metadata:
+      labels:
+        app: volatility-scaler
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      serviceAccountName: volatility-scaler
+      containers:
+      - name: controller
+        image: micromax/volatility-scaler:latest
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: volatility-scaler-config
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          runAsNonRoot: true
+          capabilities:
+            drop: ["ALL"]
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: volatility-scaler
+  namespace: micromax
+spec:
+  podSelector:
+    matchLabels:
+      app: volatility-scaler
+  policyTypes:
+  - Egress
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: micromax
+    ports:
+    - protocol: TCP
+      port: 8080
+  - to:
+    - namespaceSelector:
+        matchLabels:
+          name: kube-system
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    ports:
+    - protocol: UDP
+      port: 53

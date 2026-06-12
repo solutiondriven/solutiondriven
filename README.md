@@ -2,7 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0B1120&height=200&section=header&text=%F0%9F%9B%A0%20Moses%20Odusanya%20%F0%9F%9A%A7&fontSize=60&animation=twinkling&fontColor=FFFFFF&fontAlignY=35" alt="🛠️ Moses Odusanya 🚧" />
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Senior+Platform+Engineer;Infrastructure+as+Code+%26+GitOps;Kubernetes+Operator+Development;Zero-Trust+Security+Architect" alt="Typing SVG" />
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=25&pause=1000&color=36BCF7&center=true&vCenter=true&width=600&lines=Platform+Engineer;Infrastructure+as+Code+%26+GitOps;Kubernetes+Operator+Development;Zero-Trust+Security+Architect" alt="Typing SVG" />
 
 ---
 
